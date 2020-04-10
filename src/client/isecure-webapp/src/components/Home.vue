@@ -5,47 +5,45 @@
       <button @click="changeText(button)">{{button.name}}</button>
     </div>
     <h2>{{departmentMsg}}</h2>
-    <p>
-      Powered by Vue.js
-    </p>
-      <h3>Coming soon.........</h3>
+    <p>Powered by Vue.js</p>
+    <h3>Coming soon.........</h3>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home',
+  name: "Home",
   props: {
     msg: String
   },
-  data: function () {
+  data: function() {
     return {
-      departmentMsg: '',
-      buttons : [
-	{
-    id: 1,
-		name: 'Police',
-		text: 'This is police station'
-	},
-	{
-    id: 2,
-		name: 'Hospital',
-		text: 'This is Hospital'
-	},
-	{
-    id: 3,
-		name: 'Fire Brigade',
-		text: 'This is Fire Brigade'
-	}
-]
-    }
+      departmentMsg: "",
+      buttons: [
+        {
+          id: 1,
+          name: "Police",
+          text: "This is police station"
+        },
+        {
+          id: 2,
+          name: "Hospital",
+          text: "This is Hospital"
+        },
+        {
+          id: 3,
+          name: "Fire Brigade",
+          text: "This is Fire Brigade"
+        }
+      ]
+    };
   },
   methods: {
-    changeText:function(button){
-              this.departmentMsg = button.text
+    changeText: function(button) {
+      this.departmentMsg = button.text;
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
