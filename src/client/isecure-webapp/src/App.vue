@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <Home msg="iSecure"/>
+    <img alt="Vue logo" class="logo-isecure" src="./assets/logo_png_isecure.png" />
+    <Home msg="EMERGENCY ALERTING SYSYTEM" />
   </div>
 </template>
 
 <script>
-import Home from './components/Home.vue'
+import Home from "./components/Home.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Home
   }
-}
+};
 </script>
 
 <style>
@@ -24,5 +24,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.logo-isecure {
+  height: 250px;
+  width: 250px;
 }
 </style>
