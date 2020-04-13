@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SQLQueryStrings>
+  <SQLQueryString Id="GetUser">
+    SELECT TOP 1 * FROM ISC_Users where Username = @Username COLLATE SQL_Latin1_General_CP1_CS_AS
+  </SQLQueryString>
+</SQLQueryStrings> 
