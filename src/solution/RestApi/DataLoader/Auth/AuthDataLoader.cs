@@ -16,6 +16,8 @@ namespace RestApi.DataLoader.Auth
 
             var dbUser = GetUser(user);
 
+            dbUser.Password = AesEncDec.Decrypt(dbUser.Password);
+
             if (user != null && dbUser != null && user.UserName == dbUser.UserName && user.Password == dbUser.Password)
             {
                 isAuthed = true;
@@ -61,6 +63,56 @@ namespace RestApi.DataLoader.Auth
             }
 
             return dbUser;   
+        }
+
+        public bool CreateUser(UserData user)
+        {
+            bool isCrated = false;
+           
+            user.Password = AesEncDec.Encrypt(user.Password);
+
+            var dbUser = GetCreatedUser(user);
+
+            if (dbUser != null)
+            {
+                isCrated = true;
+            }
+
+            return isCrated;
+        }
+
+        private UserData GetCreatedUser(UserData user)
+        {
+            UserData dbUser = new UserData();
+            string connetionString = @"Data Source=ASHAN\SQLEXPRESS;Initial Catalog=ISECURE;Trusted_Connection=True";
+            SqlConnection cnn = null;
+
+            try
+            {
+                var sqlQuery = SqlQueryStringReader.GetSqlQuery("CreateUser", "Auth");
+
+                cnn = new SqlConnection(connetionString);
+                cnn.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, cnn);
+                command.Parameters.Add(new SqlParameter("@Username", user.UserName));
+                command.Parameters.Add(new SqlParameter("@Password", user.Password));
+
+                command.ExecuteNonQuery();
+
+                return user;
+            }
+            catch (Exception ex)
+            {
+                return dbUser;
+            }
+            finally
+            {
+                if (cnn != null)
+                {
+                    cnn.Close();
+                }
+            }
         }
     }
 }

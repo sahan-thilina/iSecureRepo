@@ -3,4 +3,12 @@
   <SQLQueryString Id="GetUser">
     SELECT TOP 1 * FROM ISC_Users where Username = @Username COLLATE SQL_Latin1_General_CP1_CS_AS
   </SQLQueryString>
+  <SQLQueryString Id="CreateUser">
+    BEGIN
+      IF NOT EXISTS (SELECT TOP 1 * FROM ISC_Users where Username = @Username COLLATE SQL_Latin1_General_CP1_CS_AS)
+      BEGIN
+        INSERT INTO ISC_Users (Username,Password) VALUES (@Username,@Password)
+      END
+    END
+  </SQLQueryString>
 </SQLQueryStrings> 

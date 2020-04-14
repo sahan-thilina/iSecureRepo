@@ -129,9 +129,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\RestApiConfig.cs" />
-    <Compile Include="Controller\TestController.cs" />
+    <Compile Include="Controller\AuthController.cs" />
     <Compile Include="DataLoader\Auth\AuthDataLoader.cs" />
     <Compile Include="DTO\Auth\UserData.cs" />
+    <Compile Include="Framework\AesEncDec.cs" />
     <Compile Include="Framework\SqlQueryStringReader.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
